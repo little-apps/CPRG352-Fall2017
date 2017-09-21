@@ -4,7 +4,7 @@ This is a lab that was done for the Web Application Programming (CPRG 352) cours
 
 # Environment
 
-The following enviornment was used to build and run the application:
+The following environment was used to build and run the application:
 
  * Microsoft Windows 7
  * NetBeans IDE 8.2
