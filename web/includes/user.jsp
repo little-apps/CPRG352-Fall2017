@@ -1,0 +1,1 @@
+<p>Hello ${user.getUsername()}. <a href="/login">Logout.</a></p>
