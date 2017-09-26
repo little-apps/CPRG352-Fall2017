@@ -28,10 +28,14 @@
                           <label for="second">Second</label>
                           <input type="number" class="form-control" name="second" id="second">
                         </div>
-                        <input type="submit" name="operation" value="+" class="btn btn-default">
-                        <input type="submit" name="operation" value="-" class="btn btn-default">
-                        <input type="submit" name="operation" value="*" class="btn btn-default">
-                        <input type="submit" name="operation" value="%" class="btn btn-default">
+                        <select name="operation" class="form-control">
+                            <option>+</option>
+                            <option>-</option>
+                            <option>*</option>
+                            <option>/</option>
+                            <option>%</option>
+                        </select>
+                        <input type="submit" value="Calculate" class="btn btn-default">
                     </form>
                 </div>
             </div>

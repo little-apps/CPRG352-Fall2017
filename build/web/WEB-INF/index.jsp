@@ -20,18 +20,16 @@
                     <h1>Simple JSP Calculator</h1>
                     
                     <form class="form-inline" action="/Calculator" method="post">
-                        <div class="form-group">
-                          <label for="first">First</label>
-                          <input type="number" class="form-control" name="first" id="first">
-                        </div>
-                        <div class="form-group">
-                          <label for="second">Second</label>
-                          <input type="number" class="form-control" name="second" id="second">
-                        </div>
-                        <input type="submit" name="operation" value="+" class="btn btn-default">
-                        <input type="submit" name="operation" value="-" class="btn btn-default">
-                        <input type="submit" name="operation" value="*" class="btn btn-default">
-                        <input type="submit" name="operation" value="%" class="btn btn-default">
+                        <input type="number" class="form-control" name="first" id="first">
+                        <select name="operation" class="form-control">
+                            <option>+</option>
+                            <option>-</option>
+                            <option>*</option>
+                            <option>/</option>
+                            <option>%</option>
+                        </select>
+                        <input type="number" class="form-control" name="second" id="second">
+                        <input type="submit" value="Calculate" class="btn btn-default">
                     </form>
                 </div>
             </div>
