@@ -48,31 +48,17 @@ public class CalcServlet extends HttpServlet {
         String secondStr = request.getParameter("second");
         String operation = request.getParameter("operation");
 
-        int result=0;
-        boolean calcPerformed=false;
-
-        if (operation!=null)
+        if (operation!=null && (firstStr!=null && secondStr!=null && !firstStr.equals("") && !secondStr.equals("")))
         {
-            if (firstStr!=null && secondStr!=null && !firstStr.equals("") && !secondStr.equals(""))
-            {
-                int first = Integer.parseInt(firstStr);
-                int second = Integer.parseInt(secondStr);
+            int first = Integer.parseInt(firstStr);
+            int second = Integer.parseInt(secondStr);
 
-                char operationType = operation.charAt(0);
+            Calculator calc = new Calculator(first, second);
 
-                switch (operationType)
-                {
-                    case '+': result = first + second;
-                        break;
-                    case '-': result = first - second;
-                        break;
-                    case '*': result = first * second;
-                        break;
-                    case '%': result = first % second;
-                        break;
-                }
+            try {
+                request.setAttribute("result", calc.performOperation(operation.charAt(0)));
+            } catch (Exception e) {
 
-                request.setAttribute("result", result);
             }
         }
         
