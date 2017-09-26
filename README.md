@@ -1,4 +1,4 @@
-# My Login Lab
+# Simple JSP Calculator Lab
 
 This is a lab that was done for the Web Application Programming (CPRG 352) course at [SAIT (Southern Alberta Institute of Technology)](http://sait.ca). It uses the Java Servlets and JSP in a MVC architectural pattern.
 
