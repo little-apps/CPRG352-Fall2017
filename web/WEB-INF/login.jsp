@@ -1,5 +1,6 @@
 <%@page contentType="text/html" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="custom" uri="/WEB-INF/tlds/login.tld"  %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -37,34 +38,7 @@
                 </div>
             </c:if>
 
-            <form class="form-horizontal" action='/login' method='post'>
-                <div class="form-group">
-                  <label for="username" class="col-sm-2 control-label">Username</label>
-                  <div class="col-sm-10">
-                    <input type="text" class="form-control" name="username" id="username" value="${username}">
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="password" class="col-sm-2 control-label">Password</label>
-                  <div class="col-sm-10">
-                    <input type="password" class="form-control" name="password" id="password">
-                  </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <div class="checkbox">
-                            <label>
-                                <input type="checkbox" name="rememberMe" <c:if test="${username != null}">checked</c:if>> Remember me
-                            </label>
-                        </div>
-                    </div>
-                </div>
-                <div class="form-group">
-                  <div class="col-sm-offset-2 col-sm-10">
-                    <button type="submit" class="btn btn-default">Login</button>
-                  </div>
-                </div>
-            </form>
+            <custom:login />
         </div>
     </body>
 </html>
