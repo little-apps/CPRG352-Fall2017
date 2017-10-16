@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib prefix="custom" uri="/WEB-INF/tlds/login.tld"  %>
+<%@taglib prefix="sait" uri="/WEB-INF/tlds/sait.tld"  %>
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,6 +22,13 @@
                     <h1>Login</h1>
                 </div>
             </div>
+            
+            <sait:debug>
+                <div class="well">
+                    Remote Host: ${pageContext.request.remoteHost}<br />
+                    Session ID: ${pageContext.session.id}
+                </div>
+            </sait:debug>
 
             <c:if test="${message != null}">
                 <div class="row">
