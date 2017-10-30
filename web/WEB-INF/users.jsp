@@ -62,7 +62,7 @@
                 last name: <input type="text" name="lastname" value="${selectedUser.lastname}"><br>
                 password: <input type="password" name="password" value="${selectedUser.password}"><br>
                 email: <input type="email" name="email" value="${selectedUser.email}"><br>
-                active: <input type="checkbox" name="active" ${selectedUser.active == 1 ? "checked" : ""}><br>
+                active: <input type="checkbox" name="active" <c:if test="${selectedUser.active}">checked</c:if>><br>
                 <input type="hidden" name="action" value="edit">
                 <input type="submit" value="Save">
             </form>
