@@ -82,7 +82,10 @@ public class UserDB {
             while (rs.next()) {
                 users.add(new User(rs.getString("username"), rs.getString("password"), rs.getString("email"), rs.getBoolean("active"), rs.getString("firstname"), rs.getString("lastname")));
             }
+            
+            ps.close();
             pool.freeConnection(connection);
+            
             return users;
         } catch (SQLException ex) {
             Logger.getLogger(UserDB.class.getName()).log(Level.SEVERE, "Cannot read users", ex);
