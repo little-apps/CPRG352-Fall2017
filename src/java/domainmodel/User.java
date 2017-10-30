@@ -7,7 +7,7 @@ public class User implements Serializable {
     private String username;
     private String password;
     private String email;
-    private int active;
+    private boolean active;
     private String firstname;
     private String lastname;
 
@@ -15,7 +15,7 @@ public class User implements Serializable {
 
     }
 
-    public User(String username, String password, String email, int active, String firstname, String lastname) {
+    public User(String username, String password, String email, boolean active, String firstname, String lastname) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -24,7 +24,7 @@ public class User implements Serializable {
         this.lastname = lastname;
     }
 
-    public User(String username, String password, String email, int active) {
+    public User(String username, String password, String email, boolean active) {
         this.username = username;
         this.password = password;
         this.email = email;
@@ -37,7 +37,7 @@ public class User implements Serializable {
         this.username = username;
         this.password = password;
         this.email = email;
-        this.active = 1;
+        this.active = true;
         firstname = "";
         lastname = "";
     }
@@ -66,11 +66,11 @@ public class User implements Serializable {
         this.email = email;
     }
 
-    public int getActive() {
+    public boolean getActive() {
         return active;
     }
 
-    public void setActive(int active) {
+    public void setActive(boolean active) {
         this.active = active;
     }
 

@@ -22,7 +22,7 @@ public class UserDB {
             ps.setString(1, user.getUsername());
             ps.setString(2, user.getPassword());
             ps.setString(3, user.getEmail());
-            ps.setInt(4, user.getActive());
+            ps.setBoolean(4, user.getActive());
             ps.setString(5, user.getFirstname());
             ps.setString(6, user.getLastname());
             int rows = ps.executeUpdate();
@@ -52,7 +52,7 @@ public class UserDB {
 
             ps.setString(1, user.getPassword());
             ps.setString(2, user.getEmail());
-            ps.setInt(3, user.getActive());
+            ps.setBoolean(3, user.getActive());
             ps.setString(4, user.getFirstname());
             ps.setString(5, user.getLastname());
             
@@ -80,7 +80,7 @@ public class UserDB {
             rs = ps.executeQuery();
             List<User> users = new ArrayList<>();
             while (rs.next()) {
-                users.add(new User(rs.getString("username"), rs.getString("password"), rs.getString("email"), rs.getInt("active"), rs.getString("firstname"), rs.getString("lastname")));
+                users.add(new User(rs.getString("username"), rs.getString("password"), rs.getString("email"), rs.getBoolean("active"), rs.getString("firstname"), rs.getString("lastname")));
             }
             pool.freeConnection(connection);
             return users;
@@ -118,7 +118,7 @@ public class UserDB {
 
             User user = null;
             while (rs.next()) {
-                user = new User(rs.getString("username"), rs.getString("password"), rs.getString("email"), rs.getInt("active"), rs.getString("firstname"), rs.getString("lastname"));
+                user = new User(rs.getString("username"), rs.getString("password"), rs.getString("email"), rs.getBoolean("active"), rs.getString("firstname"), rs.getString("lastname"));
             }
             pool.freeConnection(connection);
             return user;

@@ -49,7 +49,7 @@ public class UserServlet extends HttpServlet {
         String email = request.getParameter("email");
         String firstname = request.getParameter("firstname");
         String lastname = request.getParameter("lastname");
-        int active = request.getParameter("active") != null ? 1 : 0;
+        boolean active = request.getParameter("active") != null;
 
         UserService us = new UserService();
 
