@@ -19,14 +19,33 @@ public class UserServlet extends HttpServlet {
         
         UserService us = new UserService();
         String action = request.getParameter("action");
-        if (action != null && action.equals("view")) {
-            String selectedUsername = request.getParameter("selectedUsername");
-            try {
-                User user = us.get(selectedUsername);
-                request.setAttribute("selectedUser", user);
-            } catch (Exception ex) {
-                Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
+        if (action != null) {
+            switch (action) {
+                case "view": {
+                    String selectedUsername = request.getParameter("selectedUsername");
+                    try {
+                        User user = us.get(selectedUsername);
+                        request.setAttribute("selectedUser", user);
+                    } catch (Exception ex) {
+                        Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                    
+                    break;
+                }
+                
+                case "delete": {
+                    String selectedUsername = request.getParameter("selectedUsername");
+                
+                    try {
+                        if (us.delete(selectedUsername) == 0)
+                            throw new Exception();
+                    } catch (Exception ex) {
+                        request.setAttribute("errorMessage", "Unable to delete user.");
+                    }
+                }
             }
+            
+            
         }
         
         ArrayList<User> users = null;        
@@ -65,15 +84,6 @@ public class UserServlet extends HttpServlet {
                 case "edit": {
                     if (us.update(username, password, email, active, firstname, lastname) == 0)
                         request.setAttribute("errorMessage", "Unable to update user.");
-                    
-                    break;
-                }
-                
-                case "delete": {
-                    String selectedUsername = request.getParameter("selectedUsername");
-                
-                    if (us.delete(selectedUsername) == 0)
-                        request.setAttribute("errorMessage", "Unable to edit user.");
                     
                     break;
                 }
