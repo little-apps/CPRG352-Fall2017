@@ -54,13 +54,26 @@ public class UserServlet extends HttpServlet {
         UserService us = new UserService();
 
         try {
-            if (action.equals("delete")) {
-                String selectedUsername = request.getParameter("selectedUsername");
-                us.delete(selectedUsername);
-            } else if (action.equals("edit")) {
-                us.update(username, password, email, active, firstname, lastname);
-            } else if (action.equals("add")) {
-                us.insert(username, password, email, active, firstname, lastname);
+            switch (action) {
+                case "add": {
+                    us.insert(username, password, email, active, firstname, lastname);
+                    
+                    break;
+                }
+                
+                case "edit": {
+                    us.update(username, password, email, active, firstname, lastname);
+                    
+                    break;
+                }
+                
+                case "delete": {
+                    String selectedUsername = request.getParameter("selectedUsername");
+                
+                    us.delete(selectedUsername);
+                    
+                    break;
+                }
             }
         } catch (Exception ex) {
             request.setAttribute("errorMessage", "Whoops.  Could not perform that action.");
