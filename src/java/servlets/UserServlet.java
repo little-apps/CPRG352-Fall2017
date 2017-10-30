@@ -56,13 +56,15 @@ public class UserServlet extends HttpServlet {
         try {
             switch (action) {
                 case "add": {
-                    us.insert(username, password, email, active, firstname, lastname);
+                    if (us.insert(username, password, email, active, firstname, lastname) == 0)
+                        request.setAttribute("errorMessage", "Unable to insert user.");
                     
                     break;
                 }
                 
                 case "edit": {
-                    us.update(username, password, email, active, firstname, lastname);
+                    if (us.update(username, password, email, active, firstname, lastname) == 0)
+                        request.setAttribute("errorMessage", "Unable to update user.");
                     
                     break;
                 }
@@ -70,7 +72,8 @@ public class UserServlet extends HttpServlet {
                 case "delete": {
                     String selectedUsername = request.getParameter("selectedUsername");
                 
-                    us.delete(selectedUsername);
+                    if (us.delete(selectedUsername) == 0)
+                        request.setAttribute("errorMessage", "Unable to edit user.");
                     
                     break;
                 }
