@@ -17,3 +17,12 @@ CREATE TABLE User(
 );
 
 INSERT INTO User values('admin', 'password', 'test@test.com', 1, 'Bob', 'Bobberson');
+
+DROP TABLE IF EXISTS Note;
+
+CREATE TABLE `Note` (
+	`noteId` INT(11) NOT NULL AUTO_INCREMENT,
+	`dateCreated` DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+	`contents` VARCHAR(10000) NOT NULL DEFAULT '0',
+	PRIMARY KEY (`noteId`)
+);
