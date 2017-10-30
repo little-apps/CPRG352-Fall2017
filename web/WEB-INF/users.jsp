@@ -30,8 +30,7 @@
                             <th>Username</th>
                             <th>First Name</th>
                             <th>Last Name</th>
-                            <th>Delete</th>
-                            <th>Edit</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -46,8 +45,6 @@
                                         <input type="hidden" name="action" value="delete">
                                         <input type="hidden" name="selectedUsername" value="${user.username}">
                                     </form>
-                                </td>
-                                <td>
                                     <form action="users" method="get">
                                         <input type="submit" value="Edit">
                                         <input type="hidden" name="action" value="view">
