@@ -40,12 +40,9 @@
                                 <td>${user.firstname}</td>
                                 <td>${user.lastname}</td>
                                 <td>
-                                    <form action="users" method="post" >
-                                        <input type="submit" value="Delete">
-                                        <input type="hidden" name="action" value="delete">
-                                        <input type="hidden" name="selectedUsername" value="${user.username}">
-                                    </form>
                                     <a href="users?action=view&selectedUsername=${user.username}"><span class="glyphicon glyphicon-pencil"></span></a>
+                                    <a href="users?action=delete&selectedUsername=${user.username}"><span class="glyphicon glyphicon-remove"></span></a>
+                                    
                                 </td>
                             </tr>
                         </c:forEach>
