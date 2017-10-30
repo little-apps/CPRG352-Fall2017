@@ -45,11 +45,7 @@
                                         <input type="hidden" name="action" value="delete">
                                         <input type="hidden" name="selectedUsername" value="${user.username}">
                                     </form>
-                                    <form action="users" method="get">
-                                        <input type="submit" value="Edit">
-                                        <input type="hidden" name="action" value="view">
-                                        <input type="hidden" name="selectedUsername" value="${user.username}">
-                                    </form>
+                                    <a href="users?action=view&selectedUsername=${user.username}"><span class="glyphicon glyphicon-pencil"></span></a>
                                 </td>
                             </tr>
                         </c:forEach>
