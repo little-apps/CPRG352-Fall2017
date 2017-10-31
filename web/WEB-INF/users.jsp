@@ -20,7 +20,7 @@
                 <h1>Manage Users</h1>
                 <h2>Users</h2>
                 
-                <c:if test="${erroMessage}">
+                <c:if test="${errorMessage}">
                     <div class="alert alert-danger" role="alert">${errorMessage}</div>
                 </c:if>
                 
