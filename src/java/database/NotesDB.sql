@@ -22,6 +22,15 @@ CREATE TABLE `User`(
     CONSTRAINT `FK_Role_User` FOREIGN KEY (`Role`) REFERENCES `Role` (`RoleID`) ON DELETE RESTRICT ON UPDATE RESTRICT
 );
 
+CREATE TABLE PasswordChangeRequest(
+    id CHAR(64) NOT NULL,
+    created DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    username VARCHAR(10) NOT NULL,
+    PRIMARY KEY (id),
+    KEY `FK_PasswordChangeRequest_User` (`username`),
+    CONSTRAINT `FK_PasswordChangeRequest_User` FOREIGN KEY (`username`) REFERENCES `User` (`Username`) ON DELETE CASCADE ON UPDATE CASCADE
+);
+
 CREATE TABLE `Note` (
   `NoteID` int(11) NOT NULL AUTO_INCREMENT,
   `DateCreated` datetime NOT NULL,
