@@ -1,9 +1,10 @@
 package servlets;
 
 import businesslogic.UserService;
+import domainmodel.Role;
 import domainmodel.User;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -19,38 +20,25 @@ public class UserServlet extends HttpServlet {
         
         UserService us = new UserService();
         String action = request.getParameter("action");
-        if (action != null) {
-            switch (action) {
-                case "view": {
-                    String selectedUsername = request.getParameter("selectedUsername");
-                    try {
-                        User user = us.get(selectedUsername);
-                        request.setAttribute("selectedUser", user);
-                    } catch (Exception ex) {
-                        Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
-                    }
-                    
-                    break;
-                }
+        if (action != null && action.equals("view")) {
+            String selectedUsername = request.getParameter("selectedUsername");
+            try {
+
+                User user = us.get(selectedUsername);
+              
                 
-                case "delete": {
-                    String selectedUsername = request.getParameter("selectedUsername");
-                
-                    try {
-                        if (us.delete(selectedUsername) == 0)
-                            throw new Exception();
-                    } catch (Exception ex) {
-                        request.setAttribute("errorMessage", "Unable to delete user.");
-                    }
-                }
+                request.setAttribute("selectedUser", user);
+            } catch (Exception ex) {
+                Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            
         }
         
-        ArrayList<User> users = null;        
+        
+        
+        
+        List<User> users = null;        
         try {
-            users = (ArrayList<User>) us.getAll();
+            users = us.getAll();
         } catch (Exception ex) {
             Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -73,28 +61,24 @@ public class UserServlet extends HttpServlet {
         UserService us = new UserService();
 
         try {
-            switch (action) {
-                case "add": {
-                    if (us.insert(username, password, email, active, firstname, lastname) == 0)
-                        request.setAttribute("errorMessage", "Unable to insert user.");
-                    
-                    break;
-                }
-                
-                case "edit": {
-                    if (us.update(username, password, email, active, firstname, lastname) == 0)
-                        request.setAttribute("errorMessage", "Unable to update user.");
-                    
-                    break;
-                }
+            if (action.equals("delete")) {
+                String selectedUsername = request.getParameter("selectedUsername");
+                us.delete(selectedUsername);
+            } else if (action.equals("edit")) {
+                us.update(username, password, email, active, firstname, lastname);
+            } else if (action.equals("add")) {
+                us.insert(username, password, email, active, firstname, lastname);
             }
         } catch (Exception ex) {
             request.setAttribute("errorMessage", "Whoops.  Could not perform that action.");
         }
         
-        ArrayList<User> users = null;
+        List<User> users = null;
         try {
-            users = (ArrayList<User>) us.getAll();
+            users = us.getAll();
+            
+            int number_notes = users.get(0).getNoteList().size();
+            
         } catch (Exception ex) {
             Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
