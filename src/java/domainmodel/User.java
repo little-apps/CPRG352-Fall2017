@@ -39,9 +39,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "User.findByLastname", query = "SELECT u FROM User u WHERE u.lastname = :lastname")})
 public class User implements Serializable {
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "username")
-    private Collection<Passwordchangerequest> passwordchangerequestCollection;
-
+    
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -67,6 +65,8 @@ public class User implements Serializable {
     @JoinColumn(name = "Role", referencedColumnName = "RoleID")
     @ManyToOne(optional = false)
     private Role role;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "username")
+    private Collection<PasswordChangeRequest> passwordchangerequestCollection;
 
     public User() {
     }
