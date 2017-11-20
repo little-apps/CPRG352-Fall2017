@@ -6,6 +6,7 @@
 package domainmodel;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
@@ -37,6 +38,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "User.findByFirstname", query = "SELECT u FROM User u WHERE u.firstname = :firstname")
     , @NamedQuery(name = "User.findByLastname", query = "SELECT u FROM User u WHERE u.lastname = :lastname")})
 public class User implements Serializable {
+
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "username")
+    private Collection<Passwordchangerequest> passwordchangerequestCollection;
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -168,6 +172,15 @@ public class User implements Serializable {
     @Override
     public String toString() {
         return "domainmodel.User[ username=" + username + " ]";
+    }
+
+    @XmlTransient
+    public Collection<Passwordchangerequest> getPasswordchangerequestCollection() {
+        return passwordchangerequestCollection;
+    }
+
+    public void setPasswordchangerequestCollection(Collection<Passwordchangerequest> passwordchangerequestCollection) {
+        this.passwordchangerequestCollection = passwordchangerequestCollection;
     }
     
 }
