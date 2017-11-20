@@ -175,11 +175,11 @@ public class User implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Passwordchangerequest> getPasswordchangerequestCollection() {
+    public Collection<PasswordChangeRequest> getPasswordchangerequestCollection() {
         return passwordchangerequestCollection;
     }
 
-    public void setPasswordchangerequestCollection(Collection<Passwordchangerequest> passwordchangerequestCollection) {
+    public void setPasswordchangerequestCollection(Collection<PasswordChangeRequest> passwordchangerequestCollection) {
         this.passwordchangerequestCollection = passwordchangerequestCollection;
     }
     
