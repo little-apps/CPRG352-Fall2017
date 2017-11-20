@@ -1,6 +1,5 @@
 package domainmodel;
 
-import domainmodel.User;
 import java.io.Serializable;
 import java.util.Date;
 import javax.persistence.Basic;
@@ -21,13 +20,13 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author 704199
  */
 @Entity
-@Table(name = "passwordchangerequest")
+@Table(name = "PasswordChangeRequest")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Passwordchangerequest.findAll", query = "SELECT p FROM Passwordchangerequest p")
-    , @NamedQuery(name = "Passwordchangerequest.findById", query = "SELECT p FROM Passwordchangerequest p WHERE p.id = :id")
-    , @NamedQuery(name = "Passwordchangerequest.findByCreated", query = "SELECT p FROM Passwordchangerequest p WHERE p.created = :created")})
-public class Passwordchangerequest implements Serializable {
+    @NamedQuery(name = "PasswordChangeRequest.findAll", query = "SELECT p FROM PasswordChangeRequest p")
+    , @NamedQuery(name = "PasswordChangeRequest.findById", query = "SELECT p FROM PasswordChangeRequest p WHERE p.id = :id")
+    , @NamedQuery(name = "PasswordChangeRequest.findByCreated", query = "SELECT p FROM PasswordChangeRequest p WHERE p.created = :created")})
+public class PasswordChangeRequest implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -42,14 +41,14 @@ public class Passwordchangerequest implements Serializable {
     @ManyToOne(optional = false)
     private User username;
 
-    public Passwordchangerequest() {
+    public PasswordChangeRequest() {
     }
 
-    public Passwordchangerequest(String id) {
+    public PasswordChangeRequest(String id) {
         this.id = id;
     }
 
-    public Passwordchangerequest(String id, Date created) {
+    public PasswordChangeRequest(String id, Date created) {
         this.id = id;
         this.created = created;
     }
@@ -88,10 +87,10 @@ public class Passwordchangerequest implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Passwordchangerequest)) {
+        if (!(object instanceof PasswordChangeRequest)) {
             return false;
         }
-        Passwordchangerequest other = (Passwordchangerequest) object;
+        PasswordChangeRequest other = (PasswordChangeRequest) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -100,7 +99,7 @@ public class Passwordchangerequest implements Serializable {
 
     @Override
     public String toString() {
-        return "businesslogic.Passwordchangerequest[ id=" + id + " ]";
+        return "businesslogic.PasswordChangeRequest[ id=" + id + " ]";
     }
     
 }
