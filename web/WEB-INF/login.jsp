@@ -14,12 +14,16 @@
     <body>
         <h1>NotesKeepr Login</h1>
         
+        <p>${info}</p>
+        
         <form action="login" method="post">
             username: <input type="text" name="username"><br>
             password: <input type="password" name="password"><br>
             
             <input type="submit" value="Login">
-        </form>    
+        </form>
+        
+        <p><a href="/forgot-password">Forgot Password</a></p>
         
         ${message}
         
