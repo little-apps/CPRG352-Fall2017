@@ -26,7 +26,7 @@
                         <div class="alert alert-danger" role="alert"><c:out value="${errorMessage}"></c:out> <a href="/forgot-password">Go Back.</a></div>
                     </c:if>
                         
-                    <c:if test="${resetToken}">
+                    <c:if test="${resetToken != null}">
                         <form class="form-horizontal" action="/reset-password" method="post">
                             <div class="form-group">
                                 <label for="password" class="col-sm-2 control-label">New Password</label>
