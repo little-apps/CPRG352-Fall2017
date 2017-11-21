@@ -3,23 +3,51 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Forgot Password</title>
+        <title>Reset Password</title>
+        
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        
+        <script src="http://code.jquery.com/jquery-3.2.1.js"></script>
+
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="js/bootstrap.min.js"></script>
     </head>
     <body>
-        <h1>NotesKeepr Reset Password</h1>
-        
-        <p>${errorMessage}</p>
-        
-        <c:if test="${resetToken != null}">
-            <form action="/reset-password" method="post">
-                New Password: <input type="password" name="password"><br>
-                New Password (Confirm): <input type="password" name="passwordConfirm"><br>
-
-                <input type="submit" value="Reset Password">
-            </form>
-        </c:if>
-        
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Reset Password</h1>
+                    
+                    <c:if test="${errorMessage != null}">
+                        <div class="alert alert-danger" role="alert"><c:out value="${errorMessage}"></c:out></div>
+                    </c:if>
+                        
+                    <form class="form-horizontal" action="/reset-password" method="post">
+                        <div class="form-group">
+                            <label for="password" class="col-sm-2 control-label">New Password</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" name="password" id="password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="passwordConfirm" class="col-sm-2 control-label">New Password (Confirm)</label>
+                            <div class="col-sm-10">
+                                <input type="password" class="form-control" name="passwordConfirm" id="passwordConfirm">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+                                <button type="submit" class="btn btn-default">Change Password</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
         
     </body>
 </html>

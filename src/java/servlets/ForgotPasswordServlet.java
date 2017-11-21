@@ -59,7 +59,7 @@ public class ForgotPasswordServlet extends HttpServlet {
             // Generate password reset token and send email with link to reset.
             resetPasswordService.generate(user, getServletContext(), request.getRequestURL().toString().replace("/forgot-password", ""));
             
-            request.setAttribute("errorMessage", "Check your email for instructions on resetting your password.");
+            request.setAttribute("infoMessage", "Check your email for instructions on resetting your password.");
         } catch (Exception ex) {
             request.setAttribute("errorMessage", ex.getMessage());
         }
