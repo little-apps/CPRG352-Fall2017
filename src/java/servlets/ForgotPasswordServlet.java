@@ -40,19 +40,19 @@ public class ForgotPasswordServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String username = request.getParameter("username");
+        String email = request.getParameter("email");
         
         try {
-            if (username == null)
-                throw new Exception("Username not specified");
+            if (email == null)
+                throw new Exception("E-mail not specified");
             
             UserDB userDB = new UserDB();
             
             // Lookup user using username
-            User user = userDB.getUser(username);
+            User user = userDB.getUserByEmail(email);
             
             if (user == null)
-                throw new Exception("User could not be found.");
+                throw new Exception("E-mail could not be found.");
             
             ResetPasswordService resetPasswordService = new ResetPasswordService();
             

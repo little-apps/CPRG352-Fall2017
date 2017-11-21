@@ -32,9 +32,9 @@
                         
                     <form class="form-horizontal" action="/forgot-password" method="post">
                         <div class="form-group">
-                            <label for="username" class="col-sm-2 control-label">Username</label>
+                            <label for="email" class="col-sm-2 control-label">E-mail</label>
                             <div class="col-sm-10">
-                                <input type="text" class="form-control" name="username" id="username" placeholder="Username">
+                                <input type="email" class="form-control" name="email" id="email" placeholder="E-mail">
                             </div>
                         </div>
                         <div class="form-group">
