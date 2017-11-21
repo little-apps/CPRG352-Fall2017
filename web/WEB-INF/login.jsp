@@ -27,7 +27,7 @@
                     </c:if>
                     
                     <c:if test="${message != null}">
-                        <div class="alert alert-danger" role="alert"><c:out value="${message}"></c:out></div>
+                        <div class="alert alert-info" role="alert"><c:out value="${message}"></c:out></div>
                     </c:if>
                         
                     <form class="form-horizontal" action="/login" method="post">
