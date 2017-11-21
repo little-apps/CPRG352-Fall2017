@@ -4,6 +4,7 @@ import dataaccess.UserDB;
 import domainmodel.Role;
 import domainmodel.User;
 import java.util.List;
+import util.HashUtil;
 
 public class UserService {
 
@@ -22,8 +23,13 @@ public class UserService {
     }
 
     public int update(String username, String password, String email, boolean active, String firstname, String lastname) throws Exception {
+        String hashedPassword = HashUtil.bytesToHex(HashUtil.hash(password));
+        
         User user = userDB.getUser(username);
-        user.setPassword(password);
+        
+        if (password != null && !password.isEmpty())
+            user.setPassword(hashedPassword);
+        
         user.setActive(active);
         user.setEmail(email);
         user.setFirstname(firstname);
@@ -37,7 +43,9 @@ public class UserService {
     }
 
     public int insert(String username, String password, String email, boolean active, String firstname, String lastname) throws Exception {
-        User user = new User(username, password, email, active, firstname, lastname);
+        String hashedPassword = HashUtil.bytesToHex(HashUtil.hash(password));
+        
+        User user = new User(username, hashedPassword, email, active, firstname, lastname);
         Role role = new Role(2);  // default regular user role
         user.setRole(role);
         return userDB.insert(user);

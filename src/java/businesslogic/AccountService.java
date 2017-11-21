@@ -7,6 +7,7 @@ package businesslogic;
 
 import dataaccess.UserDB;
 import domainmodel.User;
+import util.HashUtil;
 
 /**
  *
@@ -19,7 +20,10 @@ public class AccountService {
         UserDB userDB = new UserDB();
         try {
             User user = userDB.getUser(username);
-            if (user.getPassword().equals(password)) {
+            
+            String expectedPasswordHashed = HashUtil.bytesToHex(HashUtil.hash(password));
+            
+            if (user.getPassword().equals(expectedPasswordHashed)) {
                 return user;
             }
             

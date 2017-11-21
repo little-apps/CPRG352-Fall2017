@@ -11,7 +11,7 @@ CREATE TABLE `Role` (
 
 CREATE TABLE `User`( 
     Username VARCHAR(10) NOT NULL,
-    Password VARCHAR(10) NOT NULL,
+    Password CHAR(64) NOT NULL,
     Email VARCHAR(30) NOT NULL,
     Active BIT NOT NULL,
     Firstname VARCHAR(50) NOT NULL,

@@ -11,6 +11,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import util.HashUtil;
 
 /**
  * Handles password resets
@@ -121,7 +122,9 @@ public class ResetPasswordServlet extends HttpServlet {
             if (password.length() < 4)
                 throw new Exception("Password must be at least 4 characters.");
             
-            user.setPassword(password);
+            String hashedPassword = HashUtil.bytesToHex(HashUtil.hash(password));
+            
+            user.setPassword(hashedPassword);
             
             userDB.update(user);
             
