@@ -84,9 +84,10 @@ public class ResetPasswordService {
     }
     
     public boolean isValid(PasswordChangeRequest passwordChangeRequest) {
+        Date currentDate = new Date();
         long expires = passwordChangeRequest.getCreated().getTime() + (60 * 60 * EXPIRES_AFTER_HOURS);
         
-        return (passwordChangeRequest.getCreated().getTime() <= expires);
+        return (currentDate.getTime() <= expires);
     }
     
     public PasswordChangeRequest getRequestFromId(String id) throws Exception {
