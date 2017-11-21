@@ -61,7 +61,7 @@ public class ResetPasswordService {
         
         try {
             HashMap<String, String> contents = new HashMap<>();
-            contents.put("username", user.getEmail());
+            contents.put("username", user.getUsername());
             contents.put("date", created.toString());
             contents.put("resetLink", resetLink);
 
