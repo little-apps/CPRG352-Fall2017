@@ -100,8 +100,6 @@ public class ResetPasswordServlet extends HttpServlet {
             if (!password.equals(passwordConfirm))
                 throw new Exception("Passwords do not match.");
             
-            // TODO: Make sure password is strong
-            
             // Can update password
             
             // Remove password change request (so the token can't be used to reset again)
@@ -110,6 +108,18 @@ public class ResetPasswordServlet extends HttpServlet {
 
             // Update users password
             User user = passwordChangeRequest.getUsername();
+            
+            // User shouldn't use the old password if they forgot it
+            if (user.getPassword().equals(password))
+                throw new Exception("Password is not strong enough.");
+            
+            // Make sure password doesn't have whitespace
+            if (!password.matches("[^\\s]+"))
+                throw new Exception("Password cannot contain whitespaces (spaces, tabs, etc.)");
+            
+            // Password should be at least 4 characters long
+            if (password.length() < 4)
+                throw new Exception("Password must be at least 4 characters.");
             
             user.setPassword(password);
             
