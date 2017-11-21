@@ -53,6 +53,9 @@ public class ResetPasswordServlet extends HttpServlet {
             request.getSession().setAttribute("resetToken", uuid);
         } catch (Exception ex) {
             request.setAttribute("errorMessage", ex.getMessage());
+            
+            // Set resetToken to null in case it exists from a previous session
+            request.getSession().setAttribute("resetToken", null);
         }
         
         getServletContext().getRequestDispatcher("/WEB-INF/resetpassword.jsp").forward(request, response);
