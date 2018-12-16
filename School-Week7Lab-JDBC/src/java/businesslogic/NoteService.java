@@ -30,6 +30,11 @@ public class NoteService {
     }
 
     public int insert(Date dateCreated, String contents) throws Exception {
-        return noteDB.insert(new Note(dateCreated, contents));
+        Note note = new Note();
+        
+        note.setDateCreated(dateCreated);
+        note.setContents(contents);
+        
+        return noteDB.insert(note);
     }
 }
